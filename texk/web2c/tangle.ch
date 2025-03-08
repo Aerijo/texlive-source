@@ -503,6 +503,12 @@ identifier: begin k:=0; j:=byte_start[cur_val]; w:=cur_val mod ww;
   if n>=214748364 then err_print('! Constant too big')
 @z
 
+@x [13.150] - l.2760 - Prevent buffer underflow when scanning control_text
+  if buffer[loc-1]<>">" then
+@y
+  if (loc=0)or(buffer[loc-1]<>">") then
+@z
+
 @x [14.157] l.2862 - Larger numerics.
 if abs(accumulator)>=@'100000 then
 @y
