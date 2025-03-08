@@ -145,14 +145,6 @@ procedure initialize;
 @d text_char == ASCII_code {the data type of characters in text files}
 @z
 
-@x [2.17] l.488 - enable maximum character set
-for i:=1 to @'37 do xchr[i]:=' ';
-for i:=@'200 to @'377 do xchr[i]:=' ';
-@y
-for i:=1 to @'37 do xchr[i]:=chr(i);
-for i:=@'200 to @'377 do xchr[i]:=chr(i);
-@z
-
 @x [3.20] l.514 - Terminal I/O.
 @d print(#)==write(term_out,#) {`|print|' means write on the terminal}
 @y
