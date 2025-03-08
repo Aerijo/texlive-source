@@ -503,6 +503,22 @@ identifier: begin k:=0; j:=byte_start[cur_val]; w:=cur_val mod ww;
   if n>=214748364 then err_print('! Constant too big')
 @z
 
+@x [11.120] l.2232 - Handle 'e' and 'E' consistently
+if (out_contrib[k]="E")and((cur_char="+")or(cur_char="-")) then
+@^uppercase@>
+  begin if k<line_length then incr(k);
+  out_contrib[k]:=cur_char; cur_char:=get_output;
+  end
+else if cur_char="e" then cur_char:="E";
+@y
+if (out_contrib[k]="E")and((cur_char="+")or(cur_char="-")) then
+@^uppercase@>
+  begin if k<line_length then incr(k);
+  out_contrib[k]:=cur_char; cur_char:=get_output;
+  end;
+if cur_char="e" then cur_char:="E";
+@z
+
 @x [13.150] - l.2760 - Prevent buffer underflow when scanning control_text
   if buffer[loc-1]<>">" then
 @y
