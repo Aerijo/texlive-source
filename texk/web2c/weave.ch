@@ -323,6 +323,15 @@ begin if no_xref then return;
 if (reserved(p)or(byte_start[p]+1=byte_start[p+ww]))and
 @z
 
+@x [6.58] l.1023 - Guard against empty identifiers
+begin l:=id_loc-id_first; {compute the length}
+@<Compute the hash code |h|@>;
+@y
+begin l:=id_loc-id_first; {compute the length}
+if l=0 then confusion('Empty identifier lookup');
+@<Compute the hash code |h|@>;
+@z
+
 @x [9.82] l.1448 - Guard against get_line() when parsing a module name
 @p procedure get_line; {inputs the next line}
 label restart;
