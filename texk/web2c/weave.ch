@@ -353,6 +353,36 @@ end;
 end;
 @z
 
+@x [11.111] l.1995 - Don't xref empty identifiers
+  begin if (next_control>=identifier)and
+      (next_control<=xref_typewriter) then
+@y
+  begin if (next_control>=identifier)and
+      (next_control<=xref_typewriter) then
+        if (id_loc-id_first)=0 then begin
+          print_nl('! Empty cross reference');
+          mark_harmless;
+        end else
+@z
+
+@x [11.113] l.2034 - Don't xref empty identifiers
+xref_roman, xref_wildcard, xref_typewriter, module_name:
+  begin loc:=loc-2; next_control:=get_next; {scan to \.{@@>}}
+  if next_control<>module_name then
+    new_xref(id_lookup(next_control-identifier));
+  end;
+@y
+xref_roman, xref_wildcard, xref_typewriter, module_name:
+  begin loc:=loc-2; next_control:=get_next; {scan to \.{@@>}}
+  if next_control<>module_name then
+    if (id_loc-id_first)=0 then begin
+      print_nl('! Empty cross reference');
+      mark_harmless;
+    end else
+      new_xref(id_lookup(next_control-identifier));
+  end;
+@z
+
 @x [12.124] l.2199
 `\.{\\input webmac}'.
 @.\\input webmac@>
